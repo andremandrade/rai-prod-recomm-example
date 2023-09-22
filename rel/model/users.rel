@@ -1,0 +1,16 @@
+entity type User = Int
+
+def users_json_gnf = attr, pos, val : users_json[_](pos, attr, val)
+
+def users = 
+    :birthday    , user, parse_date[users_json_gnf:Birthday[pos], "Y-m-d"];
+    :first_name  , user, users_json_gnf:FirstName[pos];
+    :id          , user, users_json_gnf:ID[pos];
+    :last_name   , user, users_json_gnf:LastName [pos];
+    :username    , user, users_json_gnf:Username [pos]
+    from user, pos, int_id
+    where 
+        users_json_gnf:ID(pos, int_id) and
+        ^User(int_id, user)
+
+def User = first[users:id]

@@ -1,0 +1,73 @@
+[
+    {
+      "ID": 1,
+      "Username": "john.doe@example.com",
+      "FirstName": "John",
+      "LastName": "Doe",
+      "Birthday": "1992-05-15"
+    },
+    {
+      "ID": 2,
+      "Username": "jane.smith@example.com",
+      "FirstName": "Jane",
+      "LastName": "Smith",
+      "Birthday": "1997-08-22"
+    },
+    {
+      "ID": 3,
+      "Username": "michael.johnson@example.com",
+      "FirstName": "Michael",
+      "LastName": "Johnson",
+      "Birthday": "1987-11-10"
+    },
+    {
+      "ID": 4,
+      "Username": "emily.brown@example.com",
+      "FirstName": "Emily",
+      "LastName": "Brown",
+      "Birthday": "1994-03-07"
+    },
+    {
+      "ID": 5,
+      "Username": "david.lee@example.com",
+      "FirstName": "David",
+      "LastName": "Lee",
+      "Birthday": "1983-09-18"
+    },
+    {
+      "ID": 6,
+      "Username": "sarah.wilson@example.com",
+      "FirstName": "Sarah",
+      "LastName": "Wilson",
+      "Birthday": "2001-12-05"
+    },
+    {
+      "ID": 7,
+      "Username": "robert.martinez@example.com",
+      "FirstName": "Robert",
+      "LastName": "Martinez",
+      "Birthday": "1990-06-25"
+    },
+    {
+      "ID": 8,
+      "Username": "linda.davis@example.com",
+      "FirstName": "Linda",
+      "LastName": "Davis",
+      "Birthday": "1996-02-14"
+    },
+    {
+      "ID": 9,
+      "Username": "james.harris@example.com",
+      "FirstName": "James",
+      "LastName": "Harris",
+      "Birthday": "1994-09-03"
+    },
+    {
+      "ID": 10,
+      "Username": "susan.clark@example.com",
+      "FirstName": "Susan",
+      "LastName": "Clark",
+      "Birthday": "1989-07-30"
+    }
+  ]
+  

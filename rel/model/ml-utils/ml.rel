@@ -1,0 +1,36 @@
+@outline
+module linear_regression[InitialWeight, Config, X, Y]
+    def workaround = exists(InitialWeight), exists(Config), exists(X), exists(Y)
+
+    def epoch = Config:epoch, workaround()
+    def learning_rate = Config:learning_rate, workaround()
+    def n = count[Y], workaround()
+
+    def predict[step] = linear_predict[w[step], X]
+    def w[1] = InitialWeight
+    def w[step, i] = w[step - 1, i] - learning_rate * d_w[step - 1, i], step < epoch
+    def d_w[step, j] = 2 / n * sum[i: X[i, j] * (predict[step, i] - Y[i])]
+    def weight = w[epoch - 1]
+end
+
+@inline
+def linear_predict[W, X][i] = sum[j: X[i, j] * W[j]]
+
+@inline
+def (≈)(R, S) = approx_equal(0.01, R, S)
+
+@inline
+def linspace(start, stop, num, i, v in Float) =
+    exists(step:
+        step = (stop - start) / (num - 1) and
+        range(0, num - 1, 1, i) and
+        v = start + step * i)
+
+def random_normal[seed][i] =
+    -sqrt[2] * erfinv[1 - 2 * random_uniform[seed, i]]
+
+def random_uniform[seed](i, v) =
+    exists(k, v1:
+        rel_primitive_threefry(0, seed, k) and
+        rel_primitive_threefry(k, i, v1) and
+        rel_primitive_threefry_uniform(v1, v))

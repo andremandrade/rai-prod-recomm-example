@@ -1,0 +1,3 @@
+model-directory = "rel/model"
+database-filter = "andre*"
+engine-filter = "andre*"

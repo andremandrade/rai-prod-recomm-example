@@ -1,0 +1,17 @@
+
+module recommendation 
+
+    def input = undirected_graph[interest_graph:edge]
+    
+    @inline def graph = rel:graphlib[input]
+
+    def similarity = graph:jaccard_similarity
+
+    @inline 
+    def product_by_id[prod_id] = 
+        :id         , other, other.products:id;
+        :name       , other, other.products:name;
+        :similarity , other, similarity[p, other]
+        from p, other in Product
+        where products:id(p, prod_id) 
+end

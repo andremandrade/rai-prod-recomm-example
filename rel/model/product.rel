@@ -1,0 +1,16 @@
+
+entity type Product = Int
+
+def products = 
+    :id         , prod, int_id;
+    :category   , prod, products_csv:Category[row];
+    :description, prod, products_csv:Description[row];
+    :name       , prod, products_csv:Name[row];
+    :price      , prod, parse_float[products_csv:Price[row]]
+    from prod, id, row, int_id
+    where 
+        products_csv:ID(row, id) and
+        parse_int(id, int_id) and
+        ^Product(int_id, prod)
+
+def Product = first[products:id]

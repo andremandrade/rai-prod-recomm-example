@@ -1,0 +1,20 @@
+entity type Order = Int
+
+def orders_json_gnf = attr, pos, val : orders_json[_](pos, attr, val)
+def orders_json_gnf = :ProductID, pos, prod_id : orders_json[_](pos, :Products, _, _, :ProductID, prod_id)
+
+def orders = 
+    :date    , order, parse_date[orders_json_gnf:OrderDate[pos], "Y-m-d"];
+    :id      , order, order_id;
+    :user    , order, user;
+    :products, order, prod
+    from order, pos, order_id, user_id, user, prod_id, prod
+    where 
+        orders_json_gnf:OrderID(pos, order_id) and
+        orders_json_gnf:UserID(pos, user_id) and
+        users:id(user, user_id) and
+        orders_json_gnf:ProductID(pos, prod_id) and
+        products:id(prod, prod_id) and
+        ^Order(order_id, order)
+
+def Order = first[orders:id]

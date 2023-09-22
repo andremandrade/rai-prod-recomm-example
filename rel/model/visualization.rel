@@ -1,0 +1,13 @@
+module interest_graph
+    def node = User
+    def node_attribute[u in User, "color"] = "red"
+    def node_attribute[u in User, "label"] = u.users:username
+    def node = Product
+    def node_attribute[p in Product, "color"] = "blue"
+    def node_attribute[p in Product, "label"] = concat[p.products:id, p.products:name]
+    def edge (u, p) = orders:products(o, p) and orders:user(o, u) from o
+    def directed = boolean_false
+    def layout = "dot"
+    def attribute[:graph] = "rankdir", "LR"
+end
+
