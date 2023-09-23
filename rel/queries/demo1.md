@@ -1,5 +1,54 @@
 # Show products_csv base relation
 
+## Basics
+
+### Base relations
+
+#### Insert cars
+
+```rel
+def new_cars = 
+    :id    , 1, 1;
+    :name  , 1, "Honda CR-V";
+    :price , 1, 30825.00
+def new_cars = 
+    :id    , 2, 2;
+    :name  , 2, "Toyota RAV4";
+    :price , 2, 29610.00
+
+def insert:cars = new_cars
+```
+
+#### Check cars
+
+```rel
+def output = cars:price
+```
+
+#### Delete all cars
+
+```rel
+def delete:cars = cars
+````
+
+### Derived relations
+
+```rel
+def sum_car_prices = sum[cars:price]
+
+def output  = sum_car_prices
+```
+
+### Models
+
+Install [car.rel](../model/basics/car.rel) model
+
+#### Check the installed model
+
+```rel
+def output = sum_car_prices
+```
+
 ## Columnar
 
 ```rel

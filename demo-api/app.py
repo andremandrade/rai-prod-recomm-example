@@ -1,5 +1,6 @@
 import order_handler
-from flask import Flask
+import recomm_handler
+from flask import Flask, request
 from railib import api, config, show
 
 app = Flask(__name__)
@@ -24,7 +25,18 @@ def all_orders_query():
     def output = result
     //endrel
     """
+    
+@app.route("/api/recommendation")
+def get_recommendation():
+    args = request.args
+    prod_id = args.get('prod_id')
+    resp = api.exec(ctx, database, engine, 
+                    recommendation_query(prod_id), readonly=True)
+    return recomm_handler.handle_recommendation(resp)
 
-# resp = api.exec(ctx, database, engine, all_orders_query(), readonly=True)
-# show.results(resp)
-# order_handler.handle_order(resp)
+def recommendation_query(prod_id):
+    return f"""
+    //beginrel
+    def output = recommendation:product_by_id[{prod_id}]
+    //endrel
+    """
